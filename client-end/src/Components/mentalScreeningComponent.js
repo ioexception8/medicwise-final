@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import { faqs } from "./Shared/forms";
 import { ToastContainer, toast } from "react-toastify";
-import { db } from "./Firebase";
 import "react-toastify/dist/ReactToastify.css";
 
 function Mentalscreening(props) {
@@ -13,23 +12,7 @@ function Mentalscreening(props) {
     const handleSubmit = (evt) => {
         evt.preventDefault();
         if (name && email && telno && age) {
-            db.collection("contacts")
-                .add({
-                    name: name,
-                    email: email,
-                    telephone: telno,
-                    age: age,
-                })
-                .then(() => {
-                    toast.success(`On the way, ${name}.`);
-                    setName("");
-                    setEmail("");
-                    setTelno("");
-                    setAge("");
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
+            
         } else {
             alert("Enter the remaining information!");
         }

@@ -2,13 +2,17 @@ import React, { useState } from "react";
 import Chat from "./Chat";
 import io from "socket.io-client";
 import StripeContainer from "./StripeContainer";
+import { useAuth } from "../Components/context/AuthContext";
+import { Redirect } from "react-router-dom";
 
 const socket = io.connect("http://localhost:3001");
 
 function Chating(props) {
     const [username, setUsername] = useState("");
+    const [successGlobal, setSuccessGlobal] = useState(false); 
     const [room, setRoom] = useState("");
     const [showChat, setShowChat] = useState(false);
+    const { currentUser } = useAuth();
 
     const joinRoom = () => {
         if (username !== "" && room !== "") {
@@ -17,11 +21,15 @@ function Chating(props) {
         }
     };
 
+    if (!currentUser) {
+        return <Redirect to="/login" />;
+    }
+
     return (
         <>
             <div className="d-flex">
                 <div className="chat-css">
-                    {!showChat ? (
+                    {!successGlobal ? <StripeContainer setSuccessGlobal={setSuccessGlobal} /> : !showChat ? (
                         <div>
                             <div className="joinChatContainer">
                                 <h3 className="quick">Join a chat</h3>
@@ -47,7 +55,6 @@ function Chating(props) {
                                     J O I N
                                 </button>
                             </div>
-                            <StripeContainer />
                         </div>
                     ) : (
                         <Chat socket={socket} username={username} room={room} />

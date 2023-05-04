@@ -5,8 +5,10 @@ import Footer from "./FooterComponent";
 import Video from "./VideoComponent";
 import Chating from "./ChatComponent";
 import Gesture from "./GestureVideoComponent";
-import Signup from "./SignupComponent";
+import Signup from "../auth/Signup"
 import Doctor from "./DoctorComponent";
+import Login from "../auth/Login"
+import ForgotPassword from "../auth/ForgotPassword"
 import Auth from "./AuthComponent";
 import MentalScreening from "./mentalScreeningComponent";
 import { Switch, Route } from "react-router-dom";
@@ -18,7 +20,10 @@ class Main extends Component {
                 <Header />
                 <Switch>
                     <Route exact path="/" component={Home} />
+                    <Route path="/signup" component={Signup} />
+                    <Route path="/login" component={Login} />
                     <Route path="/home" component={Home} />
+                    <Route path="/forgot-password" component={ForgotPassword} />
                     <Route path="/temp" component={Auth} />
                     <Route path="/video" component={Video} />
                     <Route path="/chat" component={Chating} />

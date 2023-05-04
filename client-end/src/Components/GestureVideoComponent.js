@@ -19,6 +19,9 @@ import { thanksGesture } from "./Shared/thanks";
 import { tiredGesture } from "./Shared/tired";
 import { yesGesture } from "./Shared/yes";
 import StripeContainer from "./StripeContainer";
+import { useAuth } from "../Components/context/AuthContext";
+import { Redirect } from "react-router-dom";
+
 
 const socket = io.connect("http://localhost:3001");
 
@@ -30,6 +33,7 @@ function Gesture(props) {
     const [room, setRoom] = useState("");
     const [showChat, setShowChat] = useState(false);
     const [messageList, setMessageList] = useState([]);
+    const { currentUser } = useAuth();
     const sendMessage = async () => {
         if (emoji !== "") {
             const messageData = {
@@ -59,7 +63,6 @@ function Gesture(props) {
             setShowChat(true);
         }
     };
-
     const runHandpose = async () => {
         const net = await handpose.load();
         console.log("Handpose model loaded.");
@@ -126,6 +129,12 @@ function Gesture(props) {
 
     runHandpose();
 
+
+    if (!currentUser) {
+        return <Redirect to="/login" />;
+    }
+
+
     return (
         <>
             <Webcam
@@ -181,7 +190,7 @@ function Gesture(props) {
                                 J O I N
                             </button>
                         </div>
-                        <StripeContainer />
+                        {/* <StripeContainer /> */}
                     </div>
                 ) : (
                     <div className="chat-window-gesture">

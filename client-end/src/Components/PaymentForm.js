@@ -23,7 +23,7 @@ const CARD_OPTIONS = {
     },
 };
 
-export default function PaymentForm() {
+export default function PaymentForm({ setSuccessGlobal }) {
     const [success, setSuccess] = useState(false);
     const stripe = useStripe();
     const elements = useElements();
@@ -49,6 +49,7 @@ export default function PaymentForm() {
                 if (response.data.success) {
                     console.log("Successful payment");
                     setSuccess(true);
+                    setSuccessGlobal(true);
                 }
             } catch (error) {
                 console.log("Error", error);
@@ -73,18 +74,8 @@ export default function PaymentForm() {
                     </fieldset>
                     <button>Pay</button>
                 </form>
-            ) : (
-                <div
-                    className="d-flex justify-content-center"
-                    style={{
-                        marginLeft: "30px",
-                        color: "green",
-                        fontWeight: "bold",
-                    }}
-                >
-                    <div className="quick">Payment Successful!</div>
-                </div>
-            )}
+            ) : null
+            }
         </>
     );
 }

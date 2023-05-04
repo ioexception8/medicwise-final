@@ -5,16 +5,25 @@ import dis from "./Images/dis.png";
 import vc from "./Images/vc.png";
 import chat from "./Images/chat.png";
 import team from "./Images/team.png";
-import { useAuth0 } from "@auth0/auth0-react";
+import { useAuth } from "./context/AuthContext";
+import { createBrowserHistory } from "history";
+import { NavLink } from "react-router-dom";
 
 function Home(props) {
-    const { loginWithRedirect, logout } = useAuth0();
     const state = localStorage.getItem("login") || "no";
+    const { currentUser, logout } = useAuth();
+    const history = createBrowserHistory();
 
-    const handleLogout = () => {
-        localStorage.setItem("login", "no");
-        logout();
-    };
+
+    async function handleLogout() {
+
+        try {
+            history.push("/");
+            await logout();
+        } catch {
+        }
+    }
+
 
     return (
         <>
@@ -30,47 +39,16 @@ function Home(props) {
                             doctor treats the patient who has the disease.
                         </h4>
                         <h6>Let's find the path to a peaceful life together</h6>
-                        {state === "no" ? (
-                            <p>
-                                <Button
+                        <div>
+            {currentUser?.email? <div><div style={{fontSize: "17px", color: "red"}} className="signUp-font my-12">{currentUser?.email}</div>
+            <Button style={{marginTop: "10px"}} variant="btn btn-dark" onClick={handleLogout}>
+                Log Out
+            </Button  ></div>: <div style={{marginTop: "30px"}}><NavLink  to="/login"><Button
                                     variant="btn btn-dark"
-                                    onClick={() =>
-                                        loginWithRedirect().then(
-                                            localStorage.setItem("login", "yes")
-                                        )
-                                    }
                                 >
-                                    Sign up
-                                </Button>{" "}
-                                &nbsp;&nbsp;&nbsp;
-                                <Button
-                                    variant="outline-dark"
-                                    onClick={() =>
-                                        loginWithRedirect().then(
-                                            localStorage.setItem("login", "yes")
-                                        )
-                                    }
-                                >
-                                    Log in
-                                </Button>{" "}
-                            </p>
-                        ) : (
-                            <div>
-                                <span className="quotes-doctor h4">
-                                    Welcome,
-                                </span>
-                                <span
-                                    className="quick mx-2"
-                                    style={{
-                                        cursor: "pointer",
-                                        color: "red",
-                                    }}
-                                    onClick={handleLogout}
-                                >
-                                    (Log Out)
-                                </span>
-                            </div>
-                        )}
+                                    Login
+                                </Button></NavLink></div>}
+        </div>
                     </div>
                 </div>
             </div>

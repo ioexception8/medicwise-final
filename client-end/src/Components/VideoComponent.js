@@ -32,7 +32,9 @@ const UseStyles = makeStyles((theme) => ({
 }));
 
 function video(props) {
+
     const classes = UseStyles();
+
     return (
         <ContextProvider>
             <div className={classes.wrapper}>

@@ -1,5 +1,8 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Grid, Typography, Paper, makeStyles } from "@material-ui/core";
+import { useAuth } from "../Components/context/AuthContext";
+import { Redirect } from "react-router-dom";
+import StripeContainer from "./StripeContainer";
 
 import { SocketContext } from "../SocketContest";
 
@@ -24,40 +27,50 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const VideoPlayer = () => {
+    const [successGlobal, setSuccessGlobal] = useState(false); 
+
+    const { currentUser } = useAuth();
+
     const { callAccepted, myVideo, userVideo, callEnded, stream } =
-        useContext(SocketContext);
+    useContext(SocketContext);
     const classes = useStyles();
 
+    if (!currentUser) {
+        return <Redirect to="/login" />;
+    }
+
     return (
-        <Grid container className={classes.gridContainer}>
-            {stream && (
-                <Paper className={classes.paper}>
-                    <Grid item xs={12} md={6}>
-                        <Typography variant="h5" gutterBottom></Typography>
-                        <video
-                            playsInline
-                            muted
-                            ref={myVideo}
-                            autoPlay
-                            className={classes.video}
-                        />
-                    </Grid>
-                </Paper>
-            )}
-            {callAccepted && !callEnded && (
-                <Paper className={classes.paper}>
-                    <Grid item xs={12} md={6}>
-                        <Typography variant="h5" gutterBottom></Typography>
-                        <video
-                            playsInline
-                            ref={userVideo}
-                            autoPlay
-                            className={classes.video}
-                        />
-                    </Grid>
-                </Paper>
-            )}
-        </Grid>
+        <div>{false ? <StripeContainer setSuccessGlobal={setSuccessGlobal} /> :<Grid container className={classes.gridContainer}>
+        {stream && (
+            <Paper className={classes.paper}>
+                <Grid item xs={12} md={6}>
+                    <Typography variant="h5" gutterBottom></Typography>
+                    <video
+                        playsInline
+                        muted
+                        ref={myVideo}
+                        autoPlay
+                        className={classes.video}
+                    />
+                </Grid>
+            </Paper>
+        )}
+        {callAccepted && !callEnded  (
+            <Paper className={classes.paper}>
+                <Grid item xs={12} md={6}>
+                    <Typography variant="h5" gutterBottom></Typography>
+                    <video
+                        playsInline
+                        ref={userVideo}
+                        autoPlay
+                        className={classes.video}
+                    />
+                </Grid>
+            </Paper>
+        )}
+    </Grid>}
+        
+        </div>
     );
 };
 

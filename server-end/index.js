@@ -4,7 +4,7 @@ const http = require("http");
 const cors = require("cors");
 const { Server } = require("socket.io");
 const bodyParser = require("body-parser");
-const stripe = require("stripe")("YOUR_STRIPE_API_KEY");
+const stripe = require("stripe")("sk_test_51JVAOFSCwyzaLEznCcZ3vo69k72i2h0btYscPO75LUjF7F8y6DnsY69yVbafpC5AuVezPTiPcXU5qPkCJ5mTGBTE00WOE1MNHe");
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
