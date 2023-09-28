@@ -55,7 +55,7 @@
 - There is a **video room** where you may communicate with your doctor via video call.
 - Lastly, there is a **gesture room** where mute and uneducated people can communicate with doctors using sign language.
 - If the doctor doesn't understand sign language, we have **machine learning models implemented using tensorflow that can decode sign language into text**.
-- The patient authentication is facilitated with <a href="https://auth0.com">Auth0</a> Authentication. **[with custom Email/Password or Google]**
+- The patient authentication is facilitated with Firebase Authentication.
 - The seamless payment gateway implemented using <a href="https://stripe.com/en-in">Stripe</a>.
 
 <details>
@@ -68,7 +68,7 @@
 | HTML          | SCSS           | Javascript   |
 | ReactJS       | NodeJS         | ExpressJS    |
 | TailwindCSS   | Bootstrap      | MaterialUI   |
-| Firebase      | Auth0          | Stripe       |
+| Firebase      | Solidity       | Stripe       |
 | SocketIO      | Netlify        | TensorflowJS |
 | Azure         | Github Actions | App Service  |
 |               |                |              |
@@ -84,20 +84,7 @@ The website (*client & server*) is deployed on **Microsoft Azure**. The `Azure A
 - Support for virtual networks, and ability to run in an isolated and dedicated App Service Environment.
 - Rigorous security and compliance standards, including SOC and PCI, for seamless deployments in the cloud, in Azure Government, and on premises.
 
-> **Note**
-> There are three client & one server endpoints.
-- Custom Domain - <a href="https://www.medicwise.us">www.medicwise.us</a>
-- Azure App Service Domain - <a href="https://medicwise-portal.azurewebsites.net">medicwise-portal.azurewebsites.net</a>
-- Netlify Domain - <a href="https://medicwise-portal.netlify.app">medicwise-portal.netlify.app</a>
-- Server Domain - <a href="https://medicwise.azurewebsites.net">medicwise.azurewebsites.net</a>
-
 > Click on <a href="https://github.com/kartikmehta8/medicwise/blob/main/AZURE_DEPLOYMENT.md">**AZURE_DEPLOYMENT.md**</a> to see how to deploy the application on **Microsoft Azure Cloud**.
-
-## Future Prospects
-- Text-to-Gesture Encoding from Doctor to Client.
-- Implementing a chat box in the video section.
-- Implementing chat bot.
-- Training our ML model to encode and decode many gestures.
 
 <!--
 ## Run Locally
