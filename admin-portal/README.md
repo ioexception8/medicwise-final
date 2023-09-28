@@ -32,13 +32,6 @@ There is a separate card for the patient that shows their,
 - The schedule *(to be implemented)* so that doctor can schedule the call from there only.
 
 ## Deployment
-The admin portal is hosted on **Netlify**. You can click on the <a href="https://medicwise.netlify.app">**LINK**</a> to visit the admin portal.
-
-```
-To Log in, use the test email/password or create your own.
-Email: test@test.com
-Password: testing
-```
 
 Some of the features of Netlify to choose as a frontend hosting service,
 - Netlify consists of **Continuous Integration/Continuous Deployment pipelines**. If there are any changes in the repository, Netlify will automatically deploy the changes.
@@ -53,7 +46,7 @@ If we talk about the prospects, we will implement the following features into ou
 - Upgrading the portal where doctors can **see previous appointments and messages**.
 - A **scheduling mechanism** so that doctors can schedule the meetings along the go.
 
-#### Click [Figma Design](https://www.figma.com/file/bCcfmEx7PWEMFTt79CepQY/MOBILE-MEDICWISE?node-id=0%3A1) to see the design of the upcoming Medicwise Admin Portal.
+#### Click [Figma Design](https://www.figma.com/file/NPmSqNkIJMQVIrAnFkJO1R/Medicwise-Future-Prospectus?type=design&mode=design&t=0YbIdTJ82Upk8Ljw-1) to see the design of the upcoming Medicwise Admin Portal.
 
 <hr />
 
