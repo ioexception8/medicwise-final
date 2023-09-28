@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { useAuth } from "../Components/context/AuthContext";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { createBrowserHistory } from "history";
 import { Button } from "react-bootstrap";
 
@@ -20,7 +20,7 @@ export default function Login() {
             setLoading(true);
             await login(emailRef.current.value, passwordRef.current.value);
             history.push("/");
-            window.location.reload(false)
+            window.location.reload(false);
         } catch {
             setError("Failed to log in");
         }
@@ -28,7 +28,10 @@ export default function Login() {
     }
 
     return (
-        <div className="centered" style={{margin: "100px", height: "450px", marginLeft: "45%"}}>
+        <div
+            className="centered"
+            style={{ margin: "100px", height: "450px", marginLeft: "45%" }}
+        >
             <div className="shadow-xl p-8" style={{ width: "300px" }}>
                 {error && (
                     <div
@@ -45,7 +48,8 @@ export default function Login() {
                             htmlFor="password"
                         >
                             Email
-                        </label><br/>
+                        </label>
+                        <br />
                         <input
                             className="shadow appearance-none border border-rounded h-12 w-full py-2 px-3 text-grey-darker mb-3 leading-tight focus:outline-none focus:shadow-outline signUp-font"
                             type="email"
@@ -70,13 +74,13 @@ export default function Login() {
                     </div>
 
                     <div className="flex items-center justify-between">
-                    <Button
-                                    variant="btn btn-dark"
-                                    type="submit"
-                                    disabled={loading}
-                                >
-                                    Sign up
-                                </Button>{" "}
+                        <Button
+                            variant="btn btn-dark"
+                            type="submit"
+                            disabled={loading}
+                        >
+                            Sign up
+                        </Button>{" "}
                     </div>
                 </form>
                 <div

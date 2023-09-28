@@ -30,7 +30,7 @@ function Footer(props) {
                 className="footer-text poppins py-3 d-flex justify-content-center"
                 style={{ backgroundColor: "#1c2331" }}
             >
-                <p>Copyright © 2023 | Kartik Mehta</p>
+                <p>Copyright © 2023</p>
             </div>
         </>
     );

@@ -1,8 +1,8 @@
 import React, { useRef, useState } from "react";
 import { useAuth } from "../Components/context/AuthContext";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { createBrowserHistory } from "history";
-import { Button, Form } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 
 export default function Signup() {
     const emailRef = useRef();
@@ -26,14 +26,22 @@ export default function Signup() {
             await signup(emailRef.current.value, passwordRef.current.value);
             setLoading(false);
             history.push("/");
-            window.location.reload(false)
+            window.location.reload(false);
         } catch {
             setError("Failed to create an account");
         }
     }
 
     return (
-        <div className="centered flex h-full w-full" style={{  height: "500px", marginLeft: "45%", marginTop: "100px", marginBottom: "100px" }}> 
+        <div
+            className="centered flex h-full w-full"
+            style={{
+                height: "500px",
+                marginLeft: "45%",
+                marginTop: "100px",
+                marginBottom: "100px",
+            }}
+        >
             <div className="shadow-xl p-8" style={{ width: "300px" }}>
                 {error && (
                     <div
@@ -50,7 +58,8 @@ export default function Signup() {
                             htmlFor="password"
                         >
                             Email
-                        </label><br/>
+                        </label>
+                        <br />
                         <input
                             className="shadow appearance-none border border-rounded h-12 w-full py-2 px-3 text-grey-darker mb-3 leading-tight focus:outline-none focus:shadow-outline signUp-font"
                             type="email"
@@ -89,12 +98,12 @@ export default function Signup() {
                     </div>
                     <div className="flex items-center justify-between">
                         <Button
-                                    variant="btn btn-dark"
-                                    type="submit"
-                                    disabled={loading}
-                                >
-                                    Sign up
-                                </Button>{" "}
+                            variant="btn btn-dark"
+                            type="submit"
+                            disabled={loading}
+                        >
+                            Sign up
+                        </Button>{" "}
                     </div>
                 </form>
                 <div

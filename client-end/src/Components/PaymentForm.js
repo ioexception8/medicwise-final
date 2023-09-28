@@ -74,8 +74,7 @@ export default function PaymentForm({ setSuccessGlobal }) {
                     </fieldset>
                     <button>Pay</button>
                 </form>
-            ) : null
-            }
+            ) : null}
         </>
     );
 }

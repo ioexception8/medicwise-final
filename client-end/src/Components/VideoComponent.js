@@ -32,7 +32,6 @@ const UseStyles = makeStyles((theme) => ({
 }));
 
 function video(props) {
-
     const classes = UseStyles();
 
     return (

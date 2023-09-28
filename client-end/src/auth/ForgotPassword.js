@@ -26,7 +26,10 @@ export default function ForgotPassword() {
     }
 
     return (
-        <div className="centered" style={{margin: "100px", height: "450px", marginLeft: "45%"}}>
+        <div
+            className="centered"
+            style={{ margin: "100px", height: "450px", marginLeft: "45%" }}
+        >
             <div className="shadow-xl p-8" style={{ width: "300px" }}>
                 {message && (
                     <div
@@ -51,7 +54,8 @@ export default function ForgotPassword() {
                             htmlFor="password"
                         >
                             Email
-                        </label><br />
+                        </label>
+                        <br />
                         <input
                             className="shadow appearance-none border border-rounded h-12 w-full py-2 px-3 text-grey-darker mb-3 leading-tight focus:outline-none focus:shadow-outline signUp-font"
                             type="email"

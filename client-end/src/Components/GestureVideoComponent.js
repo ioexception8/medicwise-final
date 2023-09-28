@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useRef, useState, useEffect } from "react";
 import * as tf from "@tensorflow/tfjs";
 import * as handpose from "@tensorflow-models/handpose";
@@ -18,10 +19,8 @@ import { sickGesture } from "./Shared/sick";
 import { thanksGesture } from "./Shared/thanks";
 import { tiredGesture } from "./Shared/tired";
 import { yesGesture } from "./Shared/yes";
-import StripeContainer from "./StripeContainer";
 import { useAuth } from "../Components/context/AuthContext";
 import { Redirect } from "react-router-dom";
-
 
 const socket = io.connect("http://localhost:3001");
 
@@ -129,11 +128,9 @@ function Gesture(props) {
 
     runHandpose();
 
-
     if (!currentUser) {
         return <Redirect to="/login" />;
     }
-
 
     return (
         <>

@@ -9,7 +9,7 @@ const socket = io.connect("http://localhost:3001");
 
 function Chating(props) {
     const [username, setUsername] = useState("");
-    const [successGlobal, setSuccessGlobal] = useState(false); 
+    const [successGlobal, setSuccessGlobal] = useState(false);
     const [room, setRoom] = useState("");
     const [showChat, setShowChat] = useState(false);
     const { currentUser } = useAuth();
@@ -29,7 +29,9 @@ function Chating(props) {
         <>
             <div className="d-flex">
                 <div className="chat-css">
-                    {!successGlobal ? <StripeContainer setSuccessGlobal={setSuccessGlobal} /> : !showChat ? (
+                    {!successGlobal ? (
+                        <StripeContainer setSuccessGlobal={setSuccessGlobal} />
+                    ) : !showChat ? (
                         <div>
                             <div className="joinChatContainer">
                                 <h3 className="quick">Join a chat</h3>

@@ -10,20 +10,15 @@ import { createBrowserHistory } from "history";
 import { NavLink } from "react-router-dom";
 
 function Home(props) {
-    const state = localStorage.getItem("login") || "no";
     const { currentUser, logout } = useAuth();
     const history = createBrowserHistory();
 
-
     async function handleLogout() {
-
         try {
             history.push("/");
             await logout();
-        } catch {
-        }
+        } catch {}
     }
-
 
     return (
         <>
@@ -40,15 +35,35 @@ function Home(props) {
                         </h4>
                         <h6>Let's find the path to a peaceful life together</h6>
                         <div>
-            {currentUser?.email? <div><div style={{fontSize: "17px", color: "red"}} className="signUp-font my-12">{currentUser?.email}</div>
-            <Button style={{marginTop: "10px"}} variant="btn btn-dark" onClick={handleLogout}>
-                Log Out
-            </Button  ></div>: <div style={{marginTop: "30px"}}><NavLink  to="/login"><Button
-                                    variant="btn btn-dark"
-                                >
-                                    Login
-                                </Button></NavLink></div>}
-        </div>
+                            {currentUser?.email ? (
+                                <div>
+                                    <div
+                                        style={{
+                                            fontSize: "17px",
+                                            color: "red",
+                                        }}
+                                        className="signUp-font my-12"
+                                    >
+                                        {currentUser?.email}
+                                    </div>
+                                    <Button
+                                        style={{ marginTop: "10px" }}
+                                        variant="btn btn-dark"
+                                        onClick={handleLogout}
+                                    >
+                                        Log Out
+                                    </Button>
+                                </div>
+                            ) : (
+                                <div style={{ marginTop: "30px" }}>
+                                    <NavLink to="/login">
+                                        <Button variant="btn btn-dark">
+                                            Login
+                                        </Button>
+                                    </NavLink>
+                                </div>
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>
